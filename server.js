@@ -7,6 +7,7 @@ const methodOverride  = require('method-override');
 const mongoose = require ('mongoose');
 const app = express ();
 const db = mongoose.connection;
+const People = require('./models/people.js');
 //___________________
 //Port
 //___________________
@@ -51,10 +52,111 @@ app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 // Routes
 //___________________
 //localhost:3000
+// INDEX ROUTE
 app.get('/' , (req, res) => {
-  res.render('index.ejs');
+  People.find({}, (err, findPeople) => {
+    res.render('index.ejs',
+    {
+      people: findPeople
+    }
+  )
+  })
 });
 
+// NEW ROUTE
+app.get('/people/new', (req, res) => {
+  res.render('new.ejs');
+});
+
+app.post('/people/new', (req, res) => {
+  People.find([
+  { firstName: 'Steven',
+    lastName: 'Jones',
+    phone: 9145566173,
+    jobTitle: 'Sr. Dev.'
+  },
+  { firstName: 'Michael',
+    lastName: 'Hope',
+    phone: 6462445211,
+    jobTitle: 'Sr. Dev.'
+  },
+  { firstName: 'Maria',
+    lastName: 'Regante',
+    phone: 9143358125,
+    jobTitle: 'Jr. Dev.'
+  },
+  { firstName: 'Pamela',
+    lastName: 'Thompson',
+    phone: 2125834567,
+    jobTitle: 'Jr. Dev.'
+  },
+  { firstName: 'Elizabeth',
+    lastName: 'Williams',
+    phone: 5189952431,
+    jobTitle: 'Jr. Dev.'
+  },
+  { firstName: 'Rachel',
+    lastName: 'DeCosta',
+    phone: 6466344452,
+    jobTitle: 'Jr. Dev.'
+  },
+  { firstName: 'Anna',
+    lastName: 'Sims',
+    phone: 5164523321,
+    jobTitle: 'Jr. Dev.'
+  },
+  { firstName: 'Paula',
+    lastName: 'Jackson',
+    phone: 2122226754,
+    jobTitle: 'Jr. Dev.'
+  },
+  { firstName: 'Vilma',
+    lastName: 'Robles',
+    phone: 2129908765,
+    jobTitle: 'Reception'
+  },
+  { firstName: 'Stephen',
+    lastName: 'Bulfamante',
+    phone: 5162234523,
+    jobTitle: 'Reception.'
+  },
+  { firstName: 'Maria',
+    lastName: 'Cruz',
+    phone: 6462234121,
+    jobTitle: 'House Keeping'
+  },
+  { firstName: 'Lamont',
+    lastName: 'Blackburn',
+    phone: 9145632212,
+    jobTitle: 'House Keeping'
+  },
+  { firstName: 'Bryan',
+    lastName: 'Espinosa',
+    phone: 2123452132,
+    jobTitle: 'House Keeping'
+  },
+  { firstName: 'Kelli',
+    lastName: 'Farrish',
+    phone: 8454533562,
+    jobTitle: 'CEO'
+  },
+  { firstName: 'Anne',
+    lastName: 'May',
+    phone: 6466843452,
+    jobTitle: 'CIO'
+  },
+  { firstName: 'Orlando',
+    lastName: 'Lee',
+    phone: 9145634610,
+    jobTitle: 'President'
+  }
+], (err, findPeople) => {
+   res.redirect('/people');
+}
+)
+})
+
+// EDIT ROUTE
 //___________________
 //Listener
 //___________________
