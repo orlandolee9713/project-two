@@ -155,8 +155,15 @@ app.post('/people/new', (req, res) => {
 }
 )
 })
+// SHOW ROUTE
+app.get('/people/view', (req, res) => {
+  res.render('show.ejs')
+})
 
 // EDIT ROUTE
+app.get('/people/edit', (req, res) => {
+  res.render('edit.ejs');
+})
 //___________________
 //Listener
 //___________________
