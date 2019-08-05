@@ -67,6 +67,12 @@ app.get('/people' , (req, res) => {
 app.get('/people/new', (req, res) => {
   res.render('new.ejs');
 });
+// DELETE ROUTE
+app.delete('/people/:id', (req, res) => {
+  People.findByIdAndRemove(req.params.id, (error, data) => {
+    res.redirect('/people');
+  });
+});
 
 app.post('/people/new', (req, res) => {
   People.find([
