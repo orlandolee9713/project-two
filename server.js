@@ -53,7 +53,7 @@ app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 //___________________
 //localhost:3000
 // INDEX ROUTE
-app.get('/' , (req, res) => {
+app.get('/people' , (req, res) => {
   People.find({}, (err, findPeople) => {
     res.render('index.ejs',
     {
@@ -157,8 +157,15 @@ app.post('/people/new', (req, res) => {
 })
 // SHOW ROUTE
 app.get('/people/view', (req, res) => {
-  res.render('show.ejs')
-})
+  People.find({}, (err, findPeople) => {
+    res.render(
+      'show.ejs',
+    {
+      people: findPeople
+    }
+  );
+});
+});
 
 // EDIT ROUTE
 app.get('/people/edit', (req, res) => {
