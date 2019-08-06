@@ -2,24 +2,10 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>All Employess</title>
+    <title>Employee Show Page</title>
   </head>
   <body>
-    <div class="container">
-      <h1>Employee List:</h1>
-     <% for (let i = 0; i < people.length; i++){%>
-       Name: <%= people[i].firstName %> <%= people[i].lastName%>
-       Phone: <%= people[i].phone %>
-       Position: <%= people[i].jobTitle %>
-       <a href="/people/edit">
-           <input type="submit" value="Edit Employee Info."></a>
-       <form action="/people/<%=people[i].id%>?_method=DELETE" method="POST">
-           <input type="submit" value="DELETE">
-     </form>
-     <%}%>
-     <nav>
-       <a href="/people">Back to Home Page</a>
-     </nav>
-    </div>
+    <h1>Employee:</h1>
+    <%=people.firstName%>
   </body>
 </html>

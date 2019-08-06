@@ -5,6 +5,7 @@
 const express = require('express');
 const methodOverride  = require('method-override');
 const mongoose = require ('mongoose');
+const morgan = require('morgan');
 const app = express ();
 const db = mongoose.connection;
 const People = require('./models/people.js');
@@ -46,137 +47,67 @@ app.use(express.json());// returns middleware that only parses JSON - may or may
 
 //use method override
 app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
-
-
+app.use(morgan('tiny'));
+const peopleController = require('./controllers/people.js');
+app.use('/people', peopleController);
 //___________________
 // Routes
 //___________________
 //localhost:3000
-// INDEX ROUTE
-app.get('/people' , (req, res) => {
-  People.find({}, (err, findPeople) => {
-    res.render('index.ejs',
-    {
-      people: findPeople
-    }
-  )
-  })
-});
-
 // NEW ROUTE
-app.get('/people/new', (req, res) => {
-  res.render('new.ejs');
-});
-// DELETE ROUTE
-app.delete('/people/:id', (req, res) => {
-  People.findByIdAndRemove(req.params.id, (error, data) => {
-    res.redirect('/people');
-  });
-});
-
-app.post('/people/new', (req, res) => {
-  People.find([
-  { firstName: 'Steven',
-    lastName: 'Jones',
-    phone: 9145566173,
-    jobTitle: 'Sr. Dev.'
-  },
-  { firstName: 'Michael',
-    lastName: 'Hope',
-    phone: 6462445211,
-    jobTitle: 'Sr. Dev.'
-  },
-  { firstName: 'Maria',
-    lastName: 'Regante',
-    phone: 9143358125,
-    jobTitle: 'Jr. Dev.'
-  },
-  { firstName: 'Pamela',
-    lastName: 'Thompson',
-    phone: 2125834567,
-    jobTitle: 'Jr. Dev.'
-  },
-  { firstName: 'Elizabeth',
-    lastName: 'Williams',
-    phone: 5189952431,
-    jobTitle: 'Jr. Dev.'
-  },
-  { firstName: 'Rachel',
-    lastName: 'DeCosta',
-    phone: 6466344452,
-    jobTitle: 'Jr. Dev.'
-  },
-  { firstName: 'Anna',
-    lastName: 'Sims',
-    phone: 5164523321,
-    jobTitle: 'Jr. Dev.'
-  },
-  { firstName: 'Paula',
-    lastName: 'Jackson',
-    phone: 2122226754,
-    jobTitle: 'Jr. Dev.'
-  },
-  { firstName: 'Vilma',
-    lastName: 'Robles',
-    phone: 2129908765,
-    jobTitle: 'Reception'
-  },
-  { firstName: 'Stephen',
-    lastName: 'Bulfamante',
-    phone: 5162234523,
-    jobTitle: 'Reception.'
-  },
-  { firstName: 'Maria',
-    lastName: 'Cruz',
-    phone: 6462234121,
-    jobTitle: 'House Keeping'
-  },
-  { firstName: 'Lamont',
-    lastName: 'Blackburn',
-    phone: 9145632212,
-    jobTitle: 'House Keeping'
-  },
-  { firstName: 'Bryan',
-    lastName: 'Espinosa',
-    phone: 2123452132,
-    jobTitle: 'House Keeping'
-  },
-  { firstName: 'Kelli',
-    lastName: 'Farrish',
-    phone: 8454533562,
-    jobTitle: 'CEO'
-  },
-  { firstName: 'Anne',
-    lastName: 'May',
-    phone: 6466843452,
-    jobTitle: 'CIO'
-  },
-  { firstName: 'Orlando',
-    lastName: 'Lee',
-    phone: 9145634610,
-    jobTitle: 'President'
-  }
-], (err, findPeople) => {
-   res.redirect('/people');
-}
-)
-})
-// SHOW ROUTE
-app.get('/people/view', (req, res) => {
-  People.find({}, (err, findPeople) => {
-    res.render(
-      'show.ejs',
-    {
-      people: findPeople
-    }
-  );
-});
-});
-
-// EDIT ROUTE
-app.get('/people/edit', (req, res) => {
-  res.render('edit.ejs');
-})
+// app.get('/people/new', (req, res) => {
+//   res.render('new.ejs');
+// });
+// // INDEX ROUTE
+// app.get('/people' , (req, res) => {
+//   People.find({}, (err, findPeople) => {
+//     res.render('index.ejs',
+//     {
+//       people: findPeople
+//     }
+//   )
+//   })
+// });
+// // SHOW ROUTE
+// app.get('/people/:id', (req, res) => {
+//   People.findById(req.params.id, (err, foundPeople) => {
+//     res.render(
+//       'show.ejs',
+//     {
+//       people: foundPeople
+//     }
+//   );
+// });
+// });
+// // DELETE ROUTE
+// app.delete('/people/:id', (req, res) => {
+//   console.log(req.params.id);
+//   People.findByIdAndRemove(req.params.id, (error, data) => {
+//     res.redirect('/people/view');
+//   });
+// });
+// // EDIT ROUTE
+// app.get('/people/:id/edit', (req, res) => {
+//   People.findById(req.params.id, (err, foundPeople) => {
+//     res.render(
+//       'edit.ejs',
+//     {
+//       people: foundPeople
+//     });
+//   });
+// });
+// // PUT ROUTE
+// app.put('/people/:id', (req, res) => {
+//   People.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatePeople) => {
+//    res.redirect('/people/');
+//  });
+// });
+// // POST ROUTE
+// app.post('/people/', (req, res) => {
+//   People.create(req.body, (err, createdPerson) => {
+//     res.redirect('/people');
+//   });
+// });
 //___________________
 //Listener
 //___________________
