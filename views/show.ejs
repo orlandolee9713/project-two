@@ -3,9 +3,25 @@
   <head>
     <meta charset="utf-8">
     <title>Employee Show Page</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
   </head>
   <body>
-    <h1>Employee:</h1>
-    <%=people.firstName%>
+    <div class="container" id="view">
+      <h1>Employee:</h1>
+      <table id="employees">
+        <tr>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Job Title</th>
+        </tr>
+        <tr>
+          <td><%=people.firstName%> <%=people.lastName%></td>
+          <td><%=people.phone%></td>
+          <td><%=people.jobTitle%></td>
+        </tr>
+      </table>
+      <a href="/people/index">Back To View Page</a>
+    </div>
   </body>
 </html>

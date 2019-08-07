@@ -3,16 +3,18 @@
   <head>
     <meta charset="utf-8">
     <title>Edit Employee Page</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
   </head>
   <body>
-    <div class="container">
+    <div class="container" id="edit">
       <h1>Edit Employee:</h1>
       <form action="/people/index/<%=people.id%>?_method=PUT" method="POST">
         First Name: <input type="text" name="firstName"/><br>
         Last Name: <input type="text" name="lastName"/><br>
         Phone #: <input type="text" name="phone"/><br>
         Position: <input type="text" name="jobTitle"/><br>
-          <input type="submit" value="EDIT">
+          <div id="editButton"><input type="submit" value="EDIT"></div>
       </form>
     </div>
   </body>

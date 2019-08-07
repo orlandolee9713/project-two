@@ -1,0 +1,99 @@
+body{
+  background-image: url('https://elements-video-cover-images-0.imgix.net/files/253084722/preview.jpg?auto=compress%2Cformat&fit=min&h=506&w=900&s=6d2e1920cb38b354e7bb4d5d9203e871');
+  background-size: cover;
+  background-repeat: no-repeat;
+  text-align: center;
+  margin: 0;
+  height: 550px;
+  width: 100%;
+  color: white;
+  display: inline-block;
+  font-weight: bold;
+}
+
+.container{
+  background-repeat: none;
+}
+h1{
+  color: white;
+  font-family: 'Roboto Mono', monospace;
+
+}
+h2{
+  color: white;
+  font-family: 'Roboto Mono', monospace;
+}
+h3{
+  color: white;
+  font-family: 'Roboto Mono', monospace;
+}
+.new{
+ padding: 100px;
+}
+input{
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-size: 22px;
+  font-family: 'Roboto Mono', monospace;
+}
+a{
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  text-shadow: 2px 2px 2px black;
+}
+#employees {
+  font-family: 'Roboto Mono', monospace;
+  border-collapse: collapse;
+  width: 100%;
+  color: green;
+}
+
+#employees td, #employees th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#employees tr:nth-child(even){background-color: #f2f2f2;}
+
+#employees tr:hover {background-color: #ddd;}
+
+#employees th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+.edit-delete{
+  display: flex;
+  flex-direction: row;
+}
+button{
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-size: 22px;
+  font-family: 'Roboto Mono', monospace;
+}
+#newPage > form > input{
+ background-color: white;
+ color: green;
+}
+#newPage > form > input:hover{
+  background-color: green;
+  text-shadow: 2px 2px 2px black;
+}
+#edit > form > input{
+  background-color: white;
+  color: green;
+}
