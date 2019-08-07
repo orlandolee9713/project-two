@@ -1,14 +1,15 @@
 body{
-  background-image: url('https://elements-video-cover-images-0.imgix.net/files/253084722/preview.jpg?auto=compress%2Cformat&fit=min&h=506&w=900&s=6d2e1920cb38b354e7bb4d5d9203e871');
+  background-image: url('https://images.pexels.com/photos/1089438/pexels-photo-1089438.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');
   background-size: cover;
   background-repeat: no-repeat;
   text-align: center;
   margin: 0;
-  height: 550px;
+  height: 100%;
   width: 100%;
   color: white;
   display: inline-block;
   font-weight: bold;
+  background-color: black;
 }
 
 .container{
